@@ -1,0 +1,265 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Bambi</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Nunito:wght@700;800&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 1.5rem;
+        font-family: "Nunito", system-ui, sans-serif;
+        background: linear-gradient(
+          180deg,
+          #d4ecff 0%,
+          #f5f9ff 55%,
+          #fafcff 100%
+        );
+      }
+
+      .face-wrap {
+        animation: floaty 3s ease-in-out infinite;
+      }
+
+      @keyframes floaty {
+        0%,
+        100% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(-6px);
+        }
+      }
+
+      .face-svg {
+        width: min(72vw, 280px);
+        height: auto;
+        display: block;
+      }
+
+      .ear {
+        transform-origin: center bottom;
+        animation: ear-wiggle 2.8s ease-in-out infinite;
+      }
+      .ear-r {
+        animation-delay: 0.12s;
+      }
+
+      @keyframes ear-wiggle {
+        0%,
+        88%,
+        100% {
+          transform: rotate(0deg);
+        }
+        92% {
+          transform: rotate(5deg);
+        }
+        96% {
+          transform: rotate(-3deg);
+        }
+      }
+
+      .eye-blink {
+        transform-box: fill-box;
+        transform-origin: 50% 45%;
+        animation: blink 4.2s ease-in-out infinite;
+      }
+      .eye-r .eye-blink {
+        animation-delay: 0.05s;
+      }
+
+      @keyframes blink {
+        0%,
+        44%,
+        48%,
+        100% {
+          transform: scaleY(1);
+        }
+        46% {
+          transform: scaleY(0.12);
+        }
+      }
+
+      .caption {
+        margin-top: 1.75rem;
+        max-width: 22rem;
+        font-weight: 800;
+        font-size: clamp(1.05rem, 4vw, 1.35rem);
+        color: #1a2744;
+        text-align: center;
+        line-height: 1.35;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="face-wrap">
+      <svg
+        class="face-svg"
+        viewBox="0 0 240 240"
+        xmlns="http://www.w3.org/2000/svg"
+        role="img"
+        aria-label="Мордочка оленёнка Bambi"
+      >
+        <defs>
+          <style>
+            .stroke {
+              fill: none;
+              stroke: #1a1a1a;
+              stroke-width: 2.5;
+              stroke-linecap: round;
+              stroke-linejoin: round;
+            }
+            .fill-face {
+              fill: #c4956a;
+              stroke: #1a1a1a;
+              stroke-width: 2.5;
+            }
+            .fill-ear {
+              fill: #deb894;
+              stroke: #1a1a1a;
+              stroke-width: 2.5;
+            }
+            .fill-black {
+              fill: #1a1a1a;
+            }
+            .fill-blush {
+              fill: #ff9eb5;
+              opacity: 0.85;
+            }
+            .antler-stroke {
+              fill: none;
+              stroke-linecap: round;
+              stroke-linejoin: round;
+            }
+            .antler-thick {
+              stroke: #8d6b4a;
+              stroke-width: 7;
+            }
+            .antler-line {
+              stroke: #1a1a1a;
+              stroke-width: 2.5;
+            }
+          </style>
+        </defs>
+
+        <!-- Уши (длинные, как у оленёнка) -->
+        <g class="ear ear-l">
+          <path
+            class="fill-ear"
+            d="M52 118 C38 78 48 38 72 28 C88 22 102 40 98 72 L92 118 Z"
+          />
+        </g>
+        <g class="ear ear-r">
+          <path
+            class="fill-ear"
+            d="M188 118 C202 78 192 38 168 28 C152 22 138 40 142 72 L148 118 Z"
+          />
+        </g>
+
+        <!-- Голова -->
+        <circle cx="120" cy="128" r="78" class="fill-face" />
+
+        <!-- Пятнышки на лбу -->
+        <ellipse cx="95" cy="88" rx="7" ry="6" fill="#fff8f0" opacity="0.45" />
+        <ellipse cx="128" cy="82" rx="5" ry="5" fill="#fff8f0" opacity="0.4" />
+        <ellipse cx="150" cy="92" rx="6" ry="5" fill="#fff8f0" opacity="0.42" />
+
+        <!-- Рожки: ветвистые, как у оленёнка (двойной контур: коричневая «масса» + чёрная линия) -->
+        <g class="antlers" aria-hidden="true">
+          <path
+            class="antler-stroke antler-thick"
+            d="M 102 50 L 94 26 M 94 26 L 84 12 M 94 26 L 104 14"
+          />
+          <path
+            class="antler-stroke antler-line"
+            d="M 102 50 L 94 26 M 94 26 L 84 12 M 94 26 L 104 14"
+          />
+          <path
+            class="antler-stroke antler-thick"
+            d="M 138 50 L 146 26 M 146 26 L 156 12 M 146 26 L 136 14"
+          />
+          <path
+            class="antler-stroke antler-line"
+            d="M 138 50 L 146 26 M 146 26 L 156 12 M 146 26 L 136 14"
+          />
+          <circle
+            cx="84"
+            cy="12"
+            r="4.5"
+            fill="#8d6b4a"
+            stroke="#1a1a1a"
+            stroke-width="2.2"
+          />
+          <circle
+            cx="104"
+            cy="14"
+            r="4.5"
+            fill="#8d6b4a"
+            stroke="#1a1a1a"
+            stroke-width="2.2"
+          />
+          <circle
+            cx="156"
+            cy="12"
+            r="4.5"
+            fill="#8d6b4a"
+            stroke="#1a1a1a"
+            stroke-width="2.2"
+          />
+          <circle
+            cx="136"
+            cy="14"
+            r="4.5"
+            fill="#8d6b4a"
+            stroke="#1a1a1a"
+            stroke-width="2.2"
+          />
+        </g>
+
+        <!-- Щёчки -->
+        <ellipse cx="58" cy="138" rx="14" ry="9" class="fill-blush" />
+        <ellipse cx="182" cy="138" rx="14" ry="9" class="fill-blush" />
+
+        <!-- Глаза -->
+        <g class="eye-l" transform="rotate(-6 88 118)">
+          <g class="eye-blink">
+            <ellipse cx="88" cy="118" rx="22" ry="26" class="fill-black" />
+            <circle cx="96" cy="110" r="8" fill="#ffffff" />
+            <circle cx="93" cy="114" r="3" fill="#ffffff" opacity="0.85" />
+          </g>
+        </g>
+        <g class="eye-r" transform="rotate(6 152 118)">
+          <g class="eye-blink">
+            <ellipse cx="152" cy="118" rx="22" ry="26" class="fill-black" />
+            <circle cx="160" cy="110" r="8" fill="#ffffff" />
+            <circle cx="157" cy="114" r="3" fill="#ffffff" opacity="0.85" />
+          </g>
+        </g>
+
+        <!-- Нос -->
+        <ellipse cx="120" cy="152" rx="12" ry="8" class="fill-black" />
+
+        <!-- Рот -->
+        <path class="stroke" d="M104 168 Q120 186 136 168" fill="none" />
+      </svg>
+    </div>
+
+    <p class="caption">Самому спортивному Bambi</p>
+  </body>
+</html>
